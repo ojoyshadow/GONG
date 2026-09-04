@@ -35,7 +35,7 @@ class InstagramCollector:
             resp = requests.get(embed_url, headers=self.HEADERS, timeout=15)
 
             import json
-            match = re.search(r'window\.__additionalDataLoaded\(['"][^'"]+['"],\s*({.+?})\);', resp.text)
+            match = re.search(r"window\.__additionalDataLoaded\(['\"][^'\"]+['\"],\s*({.+?})\);", resp.text)
             if match:
                 data = json.loads(match.group(1))
                 media = data.get("graphql", {}).get("shortcode_media", {})
